@@ -16,7 +16,7 @@ The example contains the following files:
 - [topology.wl](topology.wl) contains the definition of the topology
   and the external kinematics.  It is imported by the other files and
   it should not be run directly.
-- [generate_ibps.wl]([generate_ibps.wl]) generates a system of IBP
+- [generate_ibps.wl](generate_ibps.wl]) generates a system of IBP
   identities for the amplitude and serializes it in JSON format.  This
   file must be run from this directory before the ones below.
 - [unreduced_amplitude_-+-+.m](unreduced_amplitude_-+-+.m) is an
