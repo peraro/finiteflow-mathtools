@@ -2,7 +2,7 @@ FiniteFlow examples
 ===================
 
 A collection of examples using the Mathematica interface to
-finiteflow, and the other [packages](../packages/README.md) in this
+FiniteFlow, and the other [packages](../packages/README.md) in this
 repository.  They are split in the following subdirectories:
 
 - [scattering_amplitudes](scattering_amplitudes/README.md) contains

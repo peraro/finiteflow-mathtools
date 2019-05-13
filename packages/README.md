@@ -1,7 +1,7 @@
 FiniteFlow MathTools packages
 =============================
 
-A collection of Mathematica packages using the finiteflow library:
+A collection of Mathematica packages using the FiniteFlow library:
 
 - **FFUtils**: utilities implementing simple general purpose
   algorithms, such as algorithms for finding linear relations between
