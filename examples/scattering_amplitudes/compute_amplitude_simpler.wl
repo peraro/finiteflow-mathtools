@@ -75,7 +75,7 @@ Print["Master integrals = ",mis];
 
 
 (* ::Text:: *)
-(*We  now run the mark-and-sweep algorithm (highly recommended).*)
+(*We now run the mark-and-sweep algorithm in order to detect and remove unneeded equations from the IBP system (highly recommended).*)
 
 
 FFSparseSolverMarkAndSweepEqs[gredfull,ibps]
