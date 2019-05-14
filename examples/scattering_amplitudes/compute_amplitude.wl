@@ -563,7 +563,7 @@ FFAlgLaurent[gexpansion,laurent,{in},gredfull,0]
 
 
 FFGraphOutput[gexpansion,laurent];
-explearn = FFLearn[gexpansion];
+explearn = FFLaurentLearn[gexpansion];
 
 
 (* ::Text:: *)
