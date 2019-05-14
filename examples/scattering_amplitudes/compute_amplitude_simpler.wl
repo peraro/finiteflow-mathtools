@@ -135,9 +135,7 @@ FFGraphDraw[gredfull]
 
 
 (*FFGraphOutput[gredfull,reduced];
-reducedamp = FFReconstructFunction[gredfull,Join[{eps},invariants]].mis;
-
-
+reducedamp = FFReconstructFunction[gredfull,Join[{eps},invariants]].mis;*)
 
 
 (* ::Text:: *)
@@ -187,7 +185,6 @@ allfuncs = Union[Cases[analyticmis,funcspattern,Infinity]]
 
 
 (* ::Text:: *)
-(**)
 (*We create a list of rules for expressing master integrals in terms of *)
 (*special functions*)
 

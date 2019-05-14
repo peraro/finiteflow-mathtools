@@ -456,7 +456,7 @@ FFGraphDraw[gredfull]
 
 
 (*FFGraphOutput[gredfull,reduced];
-reducedamp = FFReconstructFunction[gredfull,Join[{eps},invariants]].mis;
+reducedamp = FFReconstructFunction[gredfull,Join[{eps},invariants]].mis;*)
 
 
 (* ::Text:: *)
