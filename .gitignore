@@ -1,3 +1,4 @@
 examples/differential_equations/ibps/*
 examples/scattering_amplitudes/ibps/*
 system.json
+*.fflow

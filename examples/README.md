@@ -12,3 +12,7 @@ repository.  They are split in the following subdirectories:
   master integrals
 - [integrable_symbols](integrable_symbols/README.md) contains examples
   building integrable symbols from a known alphabet
+- [reconstruction_jobs](reconstruction_jobs/README.md) contains an
+  example of multivariate reconstruction where the evaluations are
+  split into several jobs which may be run either sequentially or in
+  parallel on several nodes or machines
