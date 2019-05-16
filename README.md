@@ -28,8 +28,8 @@ Installation and usage
 In order to use and run these packages and examples, follow the steps
 below:
 
-* Install the FiniteFlow library, following the instructions in its
-  `README.md` file.
+* Install the [FiniteFlow](https://github.com/peraro/finiteflow)
+  library, following the instructions in its`README.md` file
 * The LiteIBP package in this repository and some of the examples
 depend on [LiteRed](http://www.inp.nsk.su/~lee/programs/LiteRed/).
 You can download the latter from the previous link.  In order to make
