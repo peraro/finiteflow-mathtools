@@ -71,4 +71,6 @@ Mathematica 11.3 and later if any parallel kernel is launched in the
 main program (see Mathematica's `Kernels[]` and `LaunchKernels[]`).
 The issue only involves Mathematica scripts generating and serializing
 IBPs, and it does not affect parallelization in the functional
-reconstruction implemented in FiniteFlow.
+reconstruction implemented in FiniteFlow.  In order to prevent this
+issue, we recommend using the "LaunchKernels" option of the LiteIBP
+procedure, as in the examples of this repostory.

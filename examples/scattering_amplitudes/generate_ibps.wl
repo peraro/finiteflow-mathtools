@@ -28,7 +28,11 @@ If[$VersionNumber<11.3,
 
 
 (* for each family generate identities and put them in the "ibps/" directory *)
-LIBPFastGenIds[#,GetSeeds,"Directory"->"ibps"]&/@{box1,box2,box3};
+(* we need to launch subkernels only once *)
+nkernels = 4;
+LIBPFastGenIds[box1,GetSeeds,"Directory"->"ibps","LaunchKernels"->4];
+LIBPFastGenIds[box2,GetSeeds,"Directory"->"ibps"];
+LIBPFastGenIds[box3,GetSeeds,"Directory"->"ibps"];
 
 
 (* serialize in JSON format *)
@@ -36,6 +40,9 @@ LIBPSerializeFastIds[
   FileNames["ibps/ids_box*.mx"],
   s->1,
   {eps,t,mf2}]
+
+
+
 
 
 

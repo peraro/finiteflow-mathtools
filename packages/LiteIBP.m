@@ -389,7 +389,13 @@ LIBPGenIds["ExtMap"][sect_,seeds_]:=LIBPEliminateZeroSectors[-seeds+(seeds/.(jEx
 LIBPGenIds["OrtInt"][sect_,seeds_]:=LIBPEliminateZeroSectors[(#[[2]]-#[[1]])&/@LIBPIntegrateOut[seeds,sect]];
 
 
-Options[LIBPFastGenIds]={"GetSectors"->Automatic,"MaxIdsPerFile"->LIBPMaxIdsPerFile,"GenIds"->LIBPGenIds,"Directory"->Automatic};
+LIBPLaunchKernels[n_]:=(LaunchKernels[2]; LIBPLaunchKernels[n-2];);
+LIBPLaunchKernels[1]:=LaunchKernels[1];
+LIBPLaunchKernels[0]:=Null;
+LIBPLaunchKernels[Automatic]:=LaunchKernels[];
+
+
+Options[LIBPFastGenIds]={"GetSectors"->Automatic,"MaxIdsPerFile"->LIBPMaxIdsPerFile,"GenIds"->LIBPGenIds,"Directory"->Automatic,"LaunchKernels"->0};
 LIBPFastGenIds[fam_,GetSeeds_,OptionsPattern[]]:=Module[
   {GetSectors,NIds,IdSeeds,maxidsperfile,GenIds,idtype,dir},
   dir = If[TrueQ[#==Automatic],Directory[],Quiet[CreateDirectory[#],CreateDirectory::filex];#]&@(OptionValue["Directory"]);
@@ -410,6 +416,7 @@ LIBPFastGenIds[fam_,GetSeeds_,OptionsPattern[]]:=Module[
   NIds["Map"][a_]:=1;
   NIds["ExtMap"][a_]:=1;
   NIds["OrtInt"][a_]:=1;
+  LIBPLaunchKernels[OptionValue["LaunchKernels"]];
   Do[If[Length[GetSectors[idtype]]>0,
     (Print["Seeding id type ",idtype];);IdSeeds[idtype] = Join@@ParallelTable[If[NIds[idtype][sect]>0, Module[{seeds,filenames,ii},
       SetDirectory[dir];
@@ -457,7 +464,7 @@ LIBPGetAllInts[intsfiles_,OptionsPattern[]]:=Module[{ints,file},
 ];
 
 
-Options[LIBPSerializeFastIds]:={"IntegralWeight"->LIBPSortByWeight,"ExtraInts"->{},"Overwrite"->True};
+Options[LIBPSerializeFastIds]:={"IntegralWeight"->LIBPSortByWeight,"ExtraInts"->{},"Overwrite"->True,"LaunchKernels"->0};
 LIBPSerializeFastIds[todofilesin_,toonesubst_,pars_,OptionsPattern[]]:=Module[
   {todofiles,allints,IntegralWeight,position,ii,eqsfiles,extraints,nints},
   todofiles = todofilesin;
@@ -483,6 +490,7 @@ LIBPSerializeFastIds[todofilesin_,toonesubst_,pars_,OptionsPattern[]]:=Module[
   ,{file,todofiles}];
   Print["-> position maps exported"];
   ClearAll[position];
+  LIBPLaunchKernels[OptionValue["LaunchKernels"]];
   Print["Total: ",AbsoluteTiming[ParallelDo[
   Print["File ",file];
   Print["File ",file," done in ",AbsoluteTiming[Module[{ids,integralsin,thisposition},

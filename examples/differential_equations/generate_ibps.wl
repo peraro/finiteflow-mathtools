@@ -15,19 +15,9 @@ GetSeeds["SR"][sector_]:=LIBPGenerateSeeds[sector,{0,0},0,rank];
 GetSeeds["Map"][sector_]:=LIBPGenerateSeeds[sector,{0,maxdots+1},0,rank];
 
 
-(* You can decide here how many parallel kernels you want to use to generate IBPs,
-   but it does not work anymore in Mathematica 11.3 and later versions.  *)
-If[$VersionNumber<11.3,
-  nkernels = 4;
-  LaunchKernels[4];
-  ParallelEvaluate[<<"init.m"];
-  ParallelNeeds["LiteIBP`"];
-  DistributeDefinitions[GetSeeds];
-]
-
-
 (* generate identities and put them in the "ibps/" directory *)
-LIBPFastGenIds[family,GetSeeds,"Directory"->"ibps"]
+nkernels = 4;
+LIBPFastGenIds[family,GetSeeds,"Directory"->"ibps","LaunchKernels"->nkernels]
 
 
 (* an overcomplete list of UT integrals, where preferred integrals should appear towards the end of the list *)
