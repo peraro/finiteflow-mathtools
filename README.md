@@ -19,7 +19,8 @@ The algorithms implemented here, are based on the following
 publication
 
 - Tiziano Peraro, *FiniteFlow: multivariate functional reconstruction
-  using finite fields and dataflow graphs* (to appear)
+  using finite fields and dataflow graphs*,
+  [arXiv:1905.08019](https://arxiv.org/abs/1905.08019)
 
 
 Installation and usage
