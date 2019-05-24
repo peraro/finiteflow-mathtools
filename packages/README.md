@@ -11,5 +11,5 @@ A collection of Mathematica packages using the FiniteFlow library:
   repository.
 - **LiteIBP**: utilities and tools for generating IBP systems of
   equations, with the help of LiteRed.
-- **Symbols**: contains Mathematica scripts for builduing integrable
+- **Symbols**: contains Mathematica scripts for building integrable
   symbols from known alphabets.

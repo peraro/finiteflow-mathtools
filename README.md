@@ -12,7 +12,7 @@ templates for more complicated applications to be run on larger
 machines and clusters.
 
 It should be noted that the packages included in this repository
-should be reguarded as a set of utilities rather the implementation of
+should be regarded as a set of utilities rather the implementation of
 fully automated solutions for specific tasks.
 
 The algorithms implemented here, are based on the following
@@ -30,7 +30,7 @@ In order to use and run these packages and examples, follow the steps
 below:
 
 * Install the [FiniteFlow](https://github.com/peraro/finiteflow)
-  library, following the instructions in its`README.md` file
+  library, following the instructions in its `README.md` file
 * The LiteIBP package in this repository and some of the examples
 depend on [LiteRed](http://www.inp.nsk.su/~lee/programs/LiteRed/).
 You can download the latter from the previous link.  In order to make
@@ -42,7 +42,7 @@ If[Not[MemberQ[$Path,$LiteRedPath]],$Path = Flatten[{$Path, $LiteRedPath }]];
 ```
 You can skip this step if you are not interested in the LiteIBP
 package or in the examples using it.
-* Make sure the packages in this repository are in your Mathamatica
+* Make sure the packages in this repository are in your Mathematica
 path, e.g. by adding the following to your `init.m` file
 ```
 $FFMathTools = "/path/to/this/repo/packages"
@@ -55,7 +55,7 @@ Most of the examples must be run from their own directory.
 Contents
 --------
 
-This reposiotory contains the following subdirectories:
+This repository contains the following subdirectories:
 
 * [packages/](packages/README.md): contains a collection of Mathematica
   packages and tools which use the FiniteFlow library
@@ -74,4 +74,4 @@ The issue only involves Mathematica scripts generating and serializing
 IBPs, and it does not affect parallelization in the functional
 reconstruction implemented in FiniteFlow.  In order to prevent this
 issue, we recommend using the "LaunchKernels" option of the LiteIBP
-procedure, as in the examples of this repostory.
+procedure, as in the examples of this repository.

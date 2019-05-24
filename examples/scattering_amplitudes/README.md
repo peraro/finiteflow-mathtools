@@ -30,11 +30,11 @@ The example contains the following files:
   [compute_amplitude.wl](compute_amplitude.wl) and it is not meant to
   be run directly.
 - [compute_amplitude_simpler.wl](compute_amplitude_simpler.wl)
-  reconstructs an helicity amplitude in terms of polylogs, starting
+  reconstructs a helicity amplitude in terms of polylogs, starting
   from a representation of it in terms of (unreduced) standard Feynman
   integrals.  We recommend reading this example before the following
   one.
-- [compute_amplitude.wl](compute_amplitude.wl) reconstructs an
+- [compute_amplitude.wl](compute_amplitude.wl) reconstructs a
   helicity amplitude in terms of polylogs, starting from a
   representation of it in terms of loop momenta and polarization
   vectors, obtained by substituting the Feynman rules into the

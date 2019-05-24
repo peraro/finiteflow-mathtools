@@ -6,7 +6,7 @@ output elements of a dataflow graph, before performing their analytic
 reconstruction.  In particular, we use this in order to write the most
 complex elements in terms of simpler ones, thanks to the possibility
 of estimating the complexity of multivariate graphs via simpler
-univariate reconstruction.  We then proceed to reconstruct an
+univariate reconstruction.  We then proceed to reconstruct a
 complete independent subset of output functions, which we use to give
 a more compact form of the result.
 
