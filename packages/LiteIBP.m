@@ -106,6 +106,7 @@ LIBPUniqueUnmatchedSectors::usage="For internal use."
 LIBPUniqueUnmatchedSectorsMaybeNoEms::usage="For internal use."
 
 LIBPGenIds::usage="LIBPGenIds[type][sect,seeds] generates identities of the specified type, for the sector sect and using seed integrals seeds."
+LIBPGenCutIds::usage="LIBPGenIds[type][sect,seeds] generates identities of the specified type, for the sector sect and using seed integrals seeds, on the cut of the sector sect."
 
 
 Begin[ "`Private`"]
@@ -389,6 +390,9 @@ LIBPGenIds["ExtMap"][sect_,seeds_]:=LIBPEliminateZeroSectors[-seeds+(seeds/.(jEx
 LIBPGenIds["OrtInt"][sect_,seeds_]:=LIBPEliminateZeroSectors[(#[[2]]-#[[1]])&/@LIBPIntegrateOut[seeds,sect]];
 
 
+LIBPGenCutIds[type_][sector_,seeds_]:=(#/.Dispatch[(#->0)&/@Select[LIBPIntegralsIn[#],(LIBPIntT[#]<LIBPIntT[sector])&]])&@(LIBPGenIds[type][sector,seeds]);
+
+
 LIBPLaunchKernels[n_]:=(LaunchKernels[2]; LIBPLaunchKernels[n-2];);
 LIBPLaunchKernels[1]:=LaunchKernels[1];
 LIBPLaunchKernels[0]:=Null;
@@ -400,6 +404,7 @@ LIBPFastGenIds[fam_,GetSeeds_,OptionsPattern[]]:=Module[
   {GetSectors,NIds,IdSeeds,maxidsperfile,GenIds,idtype,dir},
   dir = If[TrueQ[#==Automatic],Directory[],Quiet[CreateDirectory[#],CreateDirectory::filex];#]&@(OptionValue["Directory"]);
   GetSectors = OptionValue["GetSectors"];
+  GenIds=OptionValue["GenIds"];
   maxidsperfile=OptionValue["MaxIdsPerFile"];
   If[TrueQ[GetSectors==Automatic],
     Clear[GetSectors];
@@ -428,7 +433,6 @@ LIBPFastGenIds[fam_,GetSeeds_,OptionsPattern[]]:=Module[
      ],{}]
     ,{sect,GetSectors[idtype]},DistributedContexts->Automatic];
   ],{idtype,LIBPIdTypes}];
-  GenIds=OptionValue["GenIds"];
   Do[If[TrueQ[IdSeeds[idtype][[0]]==List] && Length[IdSeeds[idtype]]>0,
    Print["=========================="];
    Print["Id type: ",idtype, " # chunks = ",Length[IdSeeds[idtype]]];
