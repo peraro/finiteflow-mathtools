@@ -399,13 +399,14 @@ LIBPLaunchKernels[0]:=Null;
 LIBPLaunchKernels[Automatic]:=LaunchKernels[];
 
 
-Options[LIBPFastGenIds]={"GetSectors"->Automatic,"MaxIdsPerFile"->LIBPMaxIdsPerFile,"GenIds"->LIBPGenIds,"Directory"->Automatic,"LaunchKernels"->0};
+Options[LIBPFastGenIds]={"GetSectors"->Automatic,"MaxIdsPerFile"->LIBPMaxIdsPerFile,"GenIds"->LIBPGenIds,"Directory"->Automatic,"LaunchKernels"->0,"DeleteTrivialIdentities"->True};
 LIBPFastGenIds[fam_,GetSeeds_,OptionsPattern[]]:=Module[
-  {GetSectors,NIds,IdSeeds,maxidsperfile,GenIds,idtype,dir},
+  {GetSectors,NIds,IdSeeds,maxidsperfile,GenIds,idtype,dir,deletezeroes},
   dir = If[TrueQ[#==Automatic],Directory[],Quiet[CreateDirectory[#],CreateDirectory::filex];#]&@(OptionValue["Directory"]);
   GetSectors = OptionValue["GetSectors"];
   GenIds=OptionValue["GenIds"];
   maxidsperfile=OptionValue["MaxIdsPerFile"];
+  deletezeroes=TrueQ[OptionValue["DeleteTrivialIdentities"]];
   If[TrueQ[GetSectors==Automatic],
     Clear[GetSectors];
     GetSectors["IBP"]=LIBPUniqueUnmatchedSectorsMaybeNoEms[fam];
@@ -445,6 +446,7 @@ LIBPFastGenIds[fam_,GetSeeds_,OptionsPattern[]]:=Module[
        sect = idseeds[[1]];
        seeds = idseeds[[2]];
        ids = (GenIds[idtype][sect,seeds]);
+       If[deletezeroes, ids = DeleteCases[ids,0];];
        Export["ids_"<>ToString[sect[[1]]]<>"_"<>ToString[idtype]<>ToString[ii]<>".mx",ids,"MX"];
        Export["ints_"<>ToString[sect[[1]]]<>"_"<>ToString[idtype]<>ToString[ii]<>".mx",LIBPUnsortedIntegralsIn[ids],"MX"];
      ];]];
